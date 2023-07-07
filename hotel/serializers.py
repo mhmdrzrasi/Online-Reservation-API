@@ -1,6 +1,18 @@
+import re
+
 from rest_framework import serializers
 from .models import Hotel, Invoice, Passenger, Room, Image
 from accounts.models import User
+
+
+def check_phone_number(value):
+    if not re.match(r'^09\d{9}$', value):
+        raise serializers.ValidationError('Phone number should only be 11 digits and start with 09')
+
+
+def check_national_id(value):
+    if not re.match(r'^\d{10}$', value):
+        raise serializers.ValidationError('national id should only be 10 digits')
 
 
 class UserSerializers(serializers.ModelSerializer):
@@ -13,6 +25,10 @@ class PassengerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Passenger
         fields = ['id', 'firstname', 'lastname', 'national_id', 'phone_number', 'gender']
+        extra_kwargs = {
+            'phone_number': {'validators': (check_phone_number,)},
+            'password': {'write_only': True},
+        }
 
 
 class RoomSerializer(serializers.ModelSerializer):
