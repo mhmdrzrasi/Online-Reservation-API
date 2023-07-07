@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'hotel.apps.HotelConfig',
+    'plane.apps.PlaneConfig',
     'rest_framework',
     'corsheaders',
 ]

@@ -76,7 +76,7 @@ class InvoiceCreateView(APIView):
         if hotel_name is not None:
             hotel = Hotel.objects.filter(name=hotel_name).first()
             if not hotel:
-                return Response({'error': 'Hotel not found'}, status=status.HTTP_404_NOT_FOUND)
+                return Response({'error': 'hotel not found'}, status=status.HTTP_404_NOT_FOUND)
             data['hotel'] = hotel.id
 
         ser_data = InvoiceSerializer(data=data, context={'user_id': request.user.id})
@@ -96,7 +96,7 @@ class InvoiceUpdateView(APIView):
         if hotel_name is not None:
             hotel = Hotel.objects.filter(name=hotel_name).first()
             if not hotel:
-                return Response({'error': 'Hotel not found'}, status=status.HTTP_404_NOT_FOUND)
+                return Response({'error': 'hotel not found'}, status=status.HTTP_404_NOT_FOUND)
             data['hotel'] = hotel.id
 
         invoice = get_object_or_404(Invoice, pk=pk)

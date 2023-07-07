@@ -27,7 +27,7 @@ class PassengerSerializer(serializers.ModelSerializer):
         fields = ['id', 'firstname', 'lastname', 'national_id', 'phone_number', 'gender']
         extra_kwargs = {
             'phone_number': {'validators': (check_phone_number,)},
-            'password': {'write_only': True},
+            'national_id': {'validators': (check_national_id,)},
         }
 
 
@@ -67,7 +67,7 @@ class HotelSerializer(serializers.ModelSerializer):
 
 
 class InvoiceSerializer(serializers.ModelSerializer):
-    passengers = PassengerSerializer(many=True)
+    passengers = PassengerSerializer(many=True, read_only=True)
 
     class Meta:
         model = Invoice
