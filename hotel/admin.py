@@ -12,18 +12,23 @@ class RoomInline(admin.TabularInline):
     extra = 1
 
 
+class PassengerInline(admin.TabularInline):
+    model = Passenger
+    extra = 1
+
+
 @admin.register(Hotel)
 class HotelAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'stars', 'capacity')
     inlines = [RoomInline, ImageInline]
 
 
-class PassengerInline(admin.TabularInline):
-    model = Passenger
-    extra = 1
-
-
 @admin.register(Invoice)
 class InvoiceAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'hotel', 'beds', 'entry_date', 'leave_date')
     inlines = [PassengerInline]
+
+
+@admin.register(Image)
+class ImageAdmin(admin.ModelAdmin):
+    list_display = ('id', 'image', 'hotel')

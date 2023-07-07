@@ -40,8 +40,8 @@ class Room(models.Model):
 class Invoice(models.Model):
     entry_date = models.DateField()
     leave_date = models.DateField()
-    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='invoices')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='invoices')
 
     @property
     def beds(self):
