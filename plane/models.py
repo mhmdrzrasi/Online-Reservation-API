@@ -11,6 +11,7 @@ class Plane(models.Model):
     capacity = models.IntegerField()
 
     # میتونست در یک کلاس دیگر تعریف شود ولی به علت کمبود وقت و همچنین انجام این نوع کلاس بندی در اپ هتل منصرف شدم
+    image = models.ImageField(upload_to='images/')
     starting_city = models.CharField(max_length=128)
     destination_city = models.CharField(max_length=128)
     departure_date = models.DateField()

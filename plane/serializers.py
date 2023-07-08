@@ -33,7 +33,7 @@ class PlaneSerializer(serializers.ModelSerializer):
 
 
 class InvoiceSerializer(serializers.ModelSerializer):
-    passengers = PassengerSerializer(many=True, read_only=True)
+    passengers = PassengerSerializer(many=True)
 
     class Meta:
         model = Invoice

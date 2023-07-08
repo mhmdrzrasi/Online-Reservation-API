@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'hotel.apps.HotelConfig',
     'plane.apps.PlaneConfig',
+    'train.apps.TrainConfig',
     'rest_framework',
     'corsheaders',
 ]

@@ -49,6 +49,12 @@ class ImageCreateSerializer(serializers.ModelSerializer):
         image = Image.objects.create(hotel_id=hotel, **validated_data)
         return image
 
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        # data['image'] = instance.image.url
+        data['image'] = 'http://127.0.0.1:8000' + instance.image.url
+        return data
+
 
 class HotelSerializer(serializers.ModelSerializer):
     rooms = RoomSerializer(many=True)
@@ -67,7 +73,7 @@ class HotelSerializer(serializers.ModelSerializer):
 
 
 class InvoiceSerializer(serializers.ModelSerializer):
-    passengers = PassengerSerializer(many=True, read_only=True)
+    passengers = PassengerSerializer(many=True)
 
     class Meta:
         model = Invoice
