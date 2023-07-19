@@ -1,6 +1,6 @@
 # Online-Reservation-API
 ### University project
-Implementation of a website for online booking of hotels, plane tickets, train tickets
+Implementation of a web api for online booking of hotels, plane tickets, train tickets
 ## features :
 Create a user account and edit it    
 Use jwt for authentication    
